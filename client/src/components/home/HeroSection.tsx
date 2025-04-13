@@ -108,12 +108,12 @@ https://github.com/Raymondamem */}
               <img
                 src={raymond}
                 alt={raymond}
-                className="absolute top-0 left-0 flex justify-center items-center w-full h-full border-0 rounded-full z-2 bg-[#1f2937] object-cover"
+                className="absolute top-0 left-0 flex justify-center items-center w-full h-full border-0 rounded-full z-[2] bg-[#1f2937] object-cover"
                 loading="lazy"
               />
             </div>
             <motion.div
-              className="absolute -bottom-4 -right-4 bg-card border border-border p-4 rounded-lg shadow-lg"
+              className="absolute -bottom-4 -right-4 bg-card border border-border p-4 rounded-lg shadow-lg z-[3]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
