@@ -17,7 +17,7 @@ task = "shell.exec"
 args = "npm run dev"
 
 [deployment]
-run = ["sh", "-c", "npm run dev"]
+run = ["sh", "-c", "npm run preview"]
 
 [[ports]]
 localPort = 5000
