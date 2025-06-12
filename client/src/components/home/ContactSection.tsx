@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -72,28 +70,18 @@ export default function ContactSection() {
     },
   });
 
-  const contactMutation = useMutation({
-    mutationFn: (data: ContactFormValues) => {
-      return apiRequest("POST", "/api/contact", data);
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      form.reset();
-    },
-    onError: (error) => {
-      toast({
-        title: "Error sending message",
-        description: error.message || "Please try again later.",
-        variant: "destructive",
-      });
-    },
-  });
-
   const onSubmit = (data: ContactFormValues) => {
-    contactMutation.mutate(data);
+    const subject = encodeURIComponent(`Contact from ${data.subject}`);
+    const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+    const mailtoLink = `mailto:raymondamem525@gmail.com?subject=${subject}&body=${body}`;
+
+    window.location.href = mailtoLink;
+
+    toast({
+      title: "Opening email client...",
+      description: "Your default email client should open with the message pre-filled.",
+    });
+    form.reset();
   };
 
   return (
@@ -304,12 +292,13 @@ export default function ContactSection() {
                   <Button
                     type="submit"
                     className="w-full bg-blue-500 hover:bg-blue-600"
-                    disabled={contactMutation.isPending}
+                    // disabled={contactMutation.isPending} // Removing mutation as no longer needed
                   >
                     <FaPaperPlane className="mr-2" />
-                    {contactMutation.isPending
+                    {/* {contactMutation.isPending
                       ? "Sending..."
-                      : "Send Message"}
+                      : "Send Message"} */}
+                      Send Message
                   </Button>
                 </form>
               </Form>
