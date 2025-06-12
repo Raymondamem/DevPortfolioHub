@@ -18,15 +18,17 @@ export default function HeroSection() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Amem, Raymond Aondoakura
               <span className="block mt-2 text-red-400">
-                Embedded Systems Engineer
+                {/* Embedded Systems Engineer */}
+                Embedded/Software Developer
               </span>
             </h1>
             <div className="h-1 w-24 bg-gradient-to-r from-blue-400 to-red-400 rounded mb-6"></div>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              I specialize in embedded systems design, simulation engineering,
-              and software development. With expertise in system architecture,
+              I specialize in embedded systems design and simulation, and
+              software development. With expertise in system architecture,
               real-time programming, and hardware integration, I create robust
-              solutions for complex technical challenges.
+              solutions for complex technical challenges in embedded systems and
+              provide software solution for web technologies.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
